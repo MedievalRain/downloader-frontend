@@ -27,7 +27,7 @@ function YoutubeStreams({ streams, channel, setStream }: YoutubeStreamsProps) {
                 setStream(stream.id);
               }}
               key={stream.id}
-              text={`${stream.resolution} ${channel === "audio" && "kbps"}`}
+              text={`${stream.resolution} ${channel === "audio" ? "kbps" : ""}`}
             />
           ))}
         </Dropdown.Items>
