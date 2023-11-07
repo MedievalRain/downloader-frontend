@@ -11,10 +11,19 @@
   min-width: 8rem;
   border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  transition: outline 0.075s linear;
+  outline: 0px;
+  outline-style: solid;
 }
 
 .trigger-button:hover {
   background-color: var(--accent-color);
+}
+
+.trigger-button:focus {
+  outline: 2px;
+  outline-color: var(--source-color);
+  outline-style: solid;
 }
 
 .items {
@@ -43,6 +52,15 @@
   height: 100%;
   cursor: pointer;
   text-align: start;
+  transition: outline 0.075s linear;
+  outline: 0px;
+  outline-style: solid;
+  border-radius: 0.5rem;
+}
+.item-button:focus {
+  outline: 2px;
+  outline-color: var(--source-color);
+  outline-style: solid;
 }
 
 .item:hover {
