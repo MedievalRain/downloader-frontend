@@ -1,7 +1,8 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { VideoInfo } from "../types";
+import { VideoFormat, VideoInfo } from "../types";
 import styles from "./YoutubeLayout.module.css";
 import YoutubeStreams from "../YoutubeStreams/YoutubeStreams";
+import YoutubeFormat from "../YoutubeFormat/YoutubeFormat";
 interface YoutubeLayoutProps {
   url: string;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
@@ -12,6 +13,7 @@ function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
   const [videoInfo, setVideoInfo] = useState<VideoInfo>();
   const [pickedAudio, setPickedAudio] = useState<string | null>(null);
   const [pickedVideo, setPickedVideo] = useState<string | null>(null);
+  const [pickedFormat, setPickedFormat] = useState<VideoFormat>("MP4");
   console.log(videoInfo);
   useEffect(() => {
     if (isLoading) {
@@ -44,10 +46,7 @@ function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
           <div className={styles.params}>
             {videoInfo.video && <YoutubeStreams channel="video" setStream={setPickedVideo} streams={videoInfo.video} />}
             {videoInfo.audio && <YoutubeStreams channel="audio" setStream={setPickedAudio} streams={videoInfo.audio} />}
-
-            <span>
-              File format: <span>.mp4</span>
-            </span>
+            <YoutubeFormat setPickedFormat={setPickedFormat} />
           </div>
         </>
       ) : null}

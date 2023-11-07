@@ -11,3 +11,5 @@ export interface VideoInfo {
   audio: Stream[];
   video: Stream[];
 }
+
+export type VideoFormat = "MP4" | "WEBM";
