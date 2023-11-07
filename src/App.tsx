@@ -21,7 +21,7 @@ function App() {
         <Logo />
         <Description />
         <UrlControls url={url} setUrl={setUrl} />
-        {activeSource === "youtube" ? <YoutubeLayout url={url} /> : null}
+        {activeSource === "youtube" ? <YoutubeLayout setIsLoading={setIsLoading} url={url} /> : null}
       </div>
     </AppContext.Provider>
   );
