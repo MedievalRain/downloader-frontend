@@ -1,5 +1,9 @@
 .dropdown {
   position: relative;
+  background-color: var(--background-color);
+}
+.opened {
+  z-index: 9999;
 }
 
 .trigger-button {

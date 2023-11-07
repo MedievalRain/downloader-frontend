@@ -33,7 +33,7 @@ function Dropdown({ children, className }: DropdownProps) {
   };
   return (
     <DropdownContext.Provider value={{ isOpen, trigger, pickItem, pickedText }}>
-      <div ref={dropdownRef} className={`${styles.dropdown} ${className} `}>
+      <div ref={dropdownRef} className={`${styles.dropdown} ${isOpen && styles.opened} ${className} `}>
         {children}
       </div>
     </DropdownContext.Provider>
