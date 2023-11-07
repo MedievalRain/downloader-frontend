@@ -42,7 +42,7 @@ function Dropdown({ children, className }: DropdownProps) {
 
 function Items({ children, className }: DropdownProps) {
   const { isOpen } = useContext(DropdownContext);
-  return isOpen && <ul className={`${styles.items} ${className}`}>{children}</ul>;
+  return isOpen && <ul className={`${styles.items} ${styles["slide-in-bottom"]} ${className}`}>{children}</ul>;
 }
 
 interface ItemProps {
