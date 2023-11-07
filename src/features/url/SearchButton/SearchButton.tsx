@@ -16,7 +16,7 @@ const SearchButton = memo(function SearchButton({ source }: SearchButtonProps) {
   };
 
   return (
-    <button onClick={handleClick} className={styles.button}>
+    <button disabled={isLoading} aria-disabled={isLoading} onClick={handleClick} className={styles.button}>
       {isLoading ? (
         <div className={styles.loader}></div>
       ) : (
