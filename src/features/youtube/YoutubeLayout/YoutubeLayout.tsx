@@ -42,7 +42,8 @@ function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
 
           <div className={styles.params}>
             {videoInfo.video ? (
-              <div>
+              <div className={styles["params-container"]}>
+                <span>Video quality</span>
                 <Dropdown>
                   <Dropdown.Trigger defaultText={videoInfo.video[0].resolution} />
                   <Dropdown.Items>
