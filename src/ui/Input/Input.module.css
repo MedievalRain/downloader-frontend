@@ -8,15 +8,16 @@
     outline-color 0.25s ease-in-out;
 
   outline: 0px;
-  outline-color: var(--primary-color);
+  outline-color: var(--source-color);
   outline-style: solid;
   font-family: "JetBrains Mono";
   font-weight: 600;
+  width: 100%;
 }
 
 .input:focus {
   outline: 3px;
-  outline-color: var(--primary-color);
+  outline-color: var(--source-color);
   outline-style: solid;
   box-shadow: none;
 }

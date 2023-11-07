@@ -1,10 +1,5 @@
-.youtube:focus {
-  outline-color: #dc2626;
-}
-.x:focus,
-.tiktok:focus {
-  outline-color: #000000;
-}
-.reddit:focus {
-  outline-color: #ff4500;
+.container {
+  width: 100%;
+  display: flex;
+  gap: 0.25rem;
 }

@@ -16,3 +16,17 @@ export const getSourceFromUrl = (url: string): Source | null => {
       return null;
   }
 };
+
+export const getColorFromSource = (source: Source | null): string => {
+  switch (source) {
+    case "youtube":
+      return "#dc2626";
+    case "x":
+    case "tiktok":
+      return "#000000";
+    case "reddit":
+      return "#ff4500";
+    default:
+      return "#1a202c";
+  }
+};
