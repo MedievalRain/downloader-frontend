@@ -1,8 +1,8 @@
-import { memo } from "react";
+import { ChangeEvent, memo } from "react";
 import styles from "./Input.module.css";
 interface InputProps {
   value?: string;
-  onChange?: () => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   className?: string;
 }
