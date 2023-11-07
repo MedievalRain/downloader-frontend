@@ -29,14 +29,27 @@ function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
   return (
     <div className={styles.container}>
       {videoInfo ? (
-        <div className="video-responsive">
+        <>
           <iframe
             className={styles.video}
             src={`https://www.youtube.com/embed/${videoInfo.id}`}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="autoplay; clipboard-write; encrypted-media; "
             allowFullScreen
           />
-        </div>
+          <script src="https://embed.reddit.com/widgets.js"></script>
+
+          <div className={styles.params}>
+            <span>
+              Video channel: <span>720p</span>
+            </span>
+            <span>
+              Audio channel: <span>128kbs</span>
+            </span>
+            <span>
+              File format: <span>.mp4</span>
+            </span>
+          </div>
+        </>
       ) : null}
     </div>
   );
