@@ -1,6 +1,7 @@
+import { memo } from "react";
 import styles from "./SearchButton.module.css";
 
-function SearchButton() {
+const SearchButton = memo(function SearchButton() {
   return (
     <button className={styles.button}>
       <svg height="1.25em" viewBox="0 0 512 512">
@@ -9,6 +10,6 @@ function SearchButton() {
       {/* <div className={styles.loader}></div> */}
     </button>
   );
-}
+});
 
 export default SearchButton;
