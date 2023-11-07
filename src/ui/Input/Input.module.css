@@ -3,8 +3,10 @@
   border: none;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   padding: 0.5rem 0.5rem;
-  transition: outline 0.075s linear;
-  transition: outline-color 0.25s ease-in-out;
+  transition:
+    outline 0.075s linear,
+    outline-color 0.25s ease-in-out;
+
   width: 100%;
   outline: 0px;
   outline-color: var(--primary-color);
