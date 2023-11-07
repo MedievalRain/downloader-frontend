@@ -5,10 +5,12 @@ import UrlControls from "./features/url/UrlControls/UrlControls";
 import { useState } from "react";
 import { Source } from "./types";
 import { AppContext } from "./AppContext";
+import YoutubeLayout from "./features/youtube/YoutubeLayout/YoutubeLayout";
 
 function App() {
   const [activeSource, setActiveSource] = useState<Source | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [url, setUrl] = useState("");
   const searchVideo = (source: Source) => {
     setIsLoading(true);
     setActiveSource(source);
@@ -18,7 +20,8 @@ function App() {
       <div className={styles.container}>
         <Logo />
         <Description />
-        <UrlControls />
+        <UrlControls url={url} setUrl={setUrl} />
+        {activeSource === "youtube" ? <YoutubeLayout url={url} /> : null}
       </div>
     </AppContext.Provider>
   );

@@ -1,13 +1,18 @@
-import { ChangeEvent, memo, useEffect, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, memo, useEffect, useState } from "react";
 import Input from "../../../ui/Input/Input";
 import styles from "./UrlControls.module.css";
 import { getColorFromSource, getSourceFromUrl } from "../utils";
 import SearchButton from "../SearchButton/SearchButton";
 import { Source } from "../../../types";
 
-const UrlControls = memo(function UrlControls() {
+interface UrlControlsProps {
+  setUrl: Dispatch<SetStateAction<string>>;
+  url: string;
+}
+
+const UrlControls = memo(function UrlControls({ url, setUrl }: UrlControlsProps) {
   const [inputSource, setInputSource] = useState<Source | null>(null);
-  const [url, setUrl] = useState("");
+
   useEffect(() => {
     const color = getColorFromSource(inputSource);
     document.documentElement.style.setProperty("--source-color", color);
