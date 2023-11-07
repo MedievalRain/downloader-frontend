@@ -7,7 +7,6 @@
     outline 0.075s linear,
     outline-color 0.25s ease-in-out;
 
-  width: 100%;
   outline: 0px;
   outline-color: var(--primary-color);
   outline-style: solid;
