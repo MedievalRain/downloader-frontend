@@ -4,10 +4,11 @@ interface InputProps {
   value?: string;
   onChange?: () => void;
   placeholder?: string;
+  className?: string;
 }
 
-const Input = memo(function Input({ value, onChange, placeholder }: InputProps) {
-  return <input className={styles.input} placeholder={placeholder} value={value} onChange={onChange} />;
+const Input = memo(function Input({ value, onChange, placeholder, className }: InputProps) {
+  return <input className={`${styles.input} ${className}`} placeholder={placeholder} value={value} onChange={onChange} />;
 });
 
 export default Input;
