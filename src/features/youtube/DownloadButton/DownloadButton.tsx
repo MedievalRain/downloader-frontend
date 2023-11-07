@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { VideoFormat } from "../types";
 import styles from "./DownloadButton.module.css";
 interface DownloadButtonProps {
@@ -6,8 +7,8 @@ interface DownloadButtonProps {
   pickedFormat: VideoFormat;
 }
 
-function DownloadButton({ pickedAudio, pickedVideo, pickedFormat }: DownloadButtonProps) {
+const DownloadButton = memo(function DownloadButton({ pickedAudio, pickedVideo, pickedFormat }: DownloadButtonProps) {
   return <button className={styles.button}>Download</button>;
-}
+});
 
 export default DownloadButton;
