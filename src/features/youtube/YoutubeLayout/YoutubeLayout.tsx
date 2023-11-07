@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { VideoInfo } from "../types";
 import styles from "./YoutubeLayout.module.css";
+import Dropdown from "../../../ui/Dropdown/Dropdown";
 interface YoutubeLayoutProps {
   url: string;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
@@ -9,7 +10,8 @@ interface YoutubeLayoutProps {
 
 function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
   const [videoInfo, setVideoInfo] = useState<VideoInfo>();
-
+  const [pickedAudio, setPickedAudio] = useState("");
+  const [pickedVideo, setPickedVideo] = useState("");
   useEffect(() => {
     if (isLoading) {
       const fetchVideoInfo = async () => {
@@ -39,9 +41,19 @@ function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
           <script src="https://embed.reddit.com/widgets.js"></script>
 
           <div className={styles.params}>
-            <span>
-              Video channel: <span>720p</span>
-            </span>
+            {videoInfo.video ? (
+              <div>
+                <Dropdown>
+                  <Dropdown.Trigger defaultText={videoInfo.video[0].resolution} />
+                  <Dropdown.Items>
+                    {videoInfo.video.map((stream) => (
+                      <Dropdown.Item onClick={() => {}} key={stream.resolution} text={stream.resolution} />
+                    ))}
+                  </Dropdown.Items>
+                </Dropdown>
+              </div>
+            ) : null}
+
             <span>
               Audio channel: <span>128kbs</span>
             </span>
