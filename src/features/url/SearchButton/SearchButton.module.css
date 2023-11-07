@@ -62,3 +62,7 @@
       60px 10px;
   }
 }
+
+.test {
+  background-color: var(--test-color);
+}
