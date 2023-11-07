@@ -3,6 +3,7 @@ import { VideoFormat, VideoInfo } from "../types";
 import styles from "./YoutubeLayout.module.css";
 import YoutubeStreams from "../YoutubeStreams/YoutubeStreams";
 import YoutubeFormat from "../YoutubeFormat/YoutubeFormat";
+import DownloadButton from "../DownloadButton/DownloadButton";
 interface YoutubeLayoutProps {
   url: string;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
@@ -47,6 +48,7 @@ function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
             {videoInfo.video && <YoutubeStreams channel="video" setStream={setPickedVideo} streams={videoInfo.video} />}
             {videoInfo.audio && <YoutubeStreams channel="audio" setStream={setPickedAudio} streams={videoInfo.audio} />}
             <YoutubeFormat setPickedFormat={setPickedFormat} />
+            <DownloadButton pickedAudio={pickedAudio} pickedVideo={pickedVideo} pickedFormat={pickedFormat} />
           </div>
         </>
       ) : null}
