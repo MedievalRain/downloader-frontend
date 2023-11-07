@@ -10,7 +10,7 @@ interface YoutubeStreamsProps {
 function YoutubeStreams({ streams, channel, setStream }: YoutubeStreamsProps) {
   return (
     <div className={styles["params-container"]}>
-      <span>{channel}</span>
+      <span className={styles.capitalized}>{channel}</span>
       <Dropdown>
         <Dropdown.Trigger defaultText={streams[0].resolution} />
         <Dropdown.Items>
@@ -27,7 +27,7 @@ function YoutubeStreams({ streams, channel, setStream }: YoutubeStreamsProps) {
                 setStream(stream.id);
               }}
               key={stream.id}
-              text={stream.resolution}
+              text={`${stream.resolution} ${channel === "audio" && "kbps"}`}
             />
           ))}
         </Dropdown.Items>
