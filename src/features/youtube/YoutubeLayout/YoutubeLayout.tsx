@@ -42,7 +42,6 @@ function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
             allow="autoplay; clipboard-write; encrypted-media; "
             allowFullScreen
           />
-          <script src="https://embed.reddit.com/widgets.js"></script>
 
           <div className={styles.params}>
             {videoInfo.video && <YoutubeStreams channel="video" setStream={setPickedVideo} streams={videoInfo.video} />}
