@@ -25,3 +25,16 @@ export const formatFileSize = (videosize: number | null, audiosize: number | nul
   if (size > 1e6) return `${(size / 1e6).toFixed(2)}MB`;
   return `${(size / 1e3).toFixed(2)}KB`;
 };
+
+export const formatError = (errorCode: number): string => {
+  switch (errorCode) {
+    case 404:
+      return "Video not found";
+    case 400:
+      return "Bad input";
+    case 500:
+      return "Internal server error";
+    default:
+      return "Uknown error";
+  }
+};
