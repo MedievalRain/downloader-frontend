@@ -11,11 +11,3 @@ export interface VideoInfo {
   audio: Stream[];
   video: Stream[];
 }
-
-export type VideoFormat = "MP4" | "WEBM";
-
-export interface DownloadRequestParams {
-  id: string;
-  audio?: string;
-  video?: string;
-}
