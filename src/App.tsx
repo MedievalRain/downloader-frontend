@@ -1,11 +1,11 @@
 import styles from "./App.module.css";
 import Logo from "./ui/Logo/Logo";
 import Description from "./ui/Description/Description";
-import UrlControls from "./features/url/UrlControls/UrlControls";
 import { useState } from "react";
 import { Source } from "./types";
 import { AppContext } from "./AppContext";
 import YoutubeLayout from "./features/youtube/YoutubeLayout/YoutubeLayout";
+import SearchControls from "./features/search/SearchControls/SearchControls";
 
 function App() {
   const [activeSource, setActiveSource] = useState<Source | null>(null);
@@ -20,7 +20,7 @@ function App() {
       <div className={styles.container}>
         <Logo />
         <Description />
-        <UrlControls url={url} setUrl={setUrl} />
+        <SearchControls url={url} setUrl={setUrl} />
         {activeSource === "youtube" ? <YoutubeLayout isLoading={true} setIsLoading={setIsLoading} url={url} /> : null}
       </div>
     </AppContext.Provider>

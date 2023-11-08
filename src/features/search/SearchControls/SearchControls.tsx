@@ -1,6 +1,6 @@
 import { ChangeEvent, Dispatch, SetStateAction, memo, useEffect, useState } from "react";
 import Input from "../../../ui/Input/Input";
-import styles from "./UrlControls.module.css";
+import styles from "./SearchControls.module.css";
 import { getColorFromSource, getSourceFromUrl } from "../utils";
 import SearchButton from "../SearchButton/SearchButton";
 import { Source } from "../../../types";
