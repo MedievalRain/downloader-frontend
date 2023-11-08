@@ -22,7 +22,7 @@ function App() {
         <Logo />
         <Description />
         <SearchControls url={url} setUrl={setUrl} />
-        {activeSource === "youtube" ? <YoutubeLayout isLoading={true} setIsLoading={setIsLoading} url={url} /> : null}
+        {activeSource === "youtube" ? <YoutubeLayout isLoading={isLoading} setIsLoading={setIsLoading} url={url} /> : null}
       </div>
     </AppContext.Provider>
   );
