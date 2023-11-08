@@ -1,5 +1,4 @@
 import { memo, useState } from "react";
-import { DownloadRequestParams } from "../types";
 import styles from "./DownloadButton.module.css";
 import Loader from "../../../ui/Loader/Loader";
 interface DownloadButtonProps {
@@ -14,10 +13,7 @@ const DownloadButton = memo(function DownloadButton({ pickedAudio, pickedVideo, 
   const downloadVideo = async () => {
     setIsLoading(true);
 
-    const params: DownloadRequestParams = { id };
-    if (pickedAudio) params.audio = pickedAudio;
-    if (pickedVideo) params.video = pickedVideo;
-
+    const params = { id, video: pickedVideo || "", audio: pickedAudio || "" };
     const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/youtube/url?${new URLSearchParams(params)}`);
     if (response.ok) {
       const data = (await response.json()) as { filename: string };
