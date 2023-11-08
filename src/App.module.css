@@ -10,3 +10,8 @@
   padding: 0.5rem;
   font-family: "Segoe UI", serif;
 }
+@media only screen and (max-width: 768px) {
+  .container {
+    margin-top: 0;
+  }
+}

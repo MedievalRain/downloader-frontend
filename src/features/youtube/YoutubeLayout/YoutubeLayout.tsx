@@ -42,11 +42,15 @@ function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
       {videoInfo ? (
         <>
           <YoutubeEmbed id={videoInfo.id} />
-          <div className={styles.params}>
-            {videoInfo.video && <YoutubeStreams channel="video" setStream={setPickedVideo} streams={videoInfo.video} />}
-            {videoInfo.audio && <YoutubeStreams channel="audio" setStream={setPickedAudio} streams={videoInfo.audio} />}
-            <FileSize audiosize={audioSize} videosize={videoSize} />
-            <DownloadButton pickedAudio={pickedAudio} pickedVideo={pickedVideo} id={videoInfo.id} title={videoInfo.title} />
+          <div className={styles["info-container"]}>
+            <div className={styles["dropdown-container"]}>
+              {videoInfo.video && <YoutubeStreams channel="video" setStream={setPickedVideo} streams={videoInfo.video} />}
+              {videoInfo.audio && <YoutubeStreams channel="audio" setStream={setPickedAudio} streams={videoInfo.audio} />}
+            </div>
+            <div className={styles.params}>
+              <FileSize audiosize={audioSize} videosize={videoSize} />
+              <DownloadButton pickedAudio={pickedAudio} pickedVideo={pickedVideo} id={videoInfo.id} title={videoInfo.title} />
+            </div>
           </div>
         </>
       ) : null}
