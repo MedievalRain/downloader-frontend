@@ -13,3 +13,10 @@ export interface VideoInfo {
 }
 
 export type VideoFormat = "MP4" | "WEBM";
+
+export interface DownloadRequestParams {
+  id: string;
+  extension: string;
+  audio?: string;
+  video?: string;
+}

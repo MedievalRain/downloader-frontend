@@ -48,7 +48,7 @@ function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
             {videoInfo.video && <YoutubeStreams channel="video" setStream={setPickedVideo} streams={videoInfo.video} />}
             {videoInfo.audio && <YoutubeStreams channel="audio" setStream={setPickedAudio} streams={videoInfo.audio} />}
             <YoutubeFormat setPickedFormat={setPickedFormat} />
-            <DownloadButton pickedAudio={pickedAudio} pickedVideo={pickedVideo} pickedFormat={pickedFormat} />
+            <DownloadButton pickedAudio={pickedAudio} pickedVideo={pickedVideo} pickedFormat={pickedFormat} id={videoInfo.id} />
           </div>
         </>
       ) : null}
