@@ -5,6 +5,7 @@ import YoutubeStreams from "../YoutubeStreams/YoutubeStreams";
 import DownloadButton from "../DownloadButton/DownloadButton";
 import FileSize from "../FileSize/FileSize";
 import { getSizeFromStream } from "../utils";
+import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 interface YoutubeLayoutProps {
   url: string;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
@@ -40,12 +41,7 @@ function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
     <div className={styles.container}>
       {videoInfo ? (
         <>
-          <iframe
-            className={styles.video}
-            src={`https://www.youtube.com/embed/${videoInfo.id}`}
-            allow="clipboard-write; encrypted-media;"
-          />
-
+          <YoutubeEmbed id={videoInfo.id} />
           <div className={styles.params}>
             {videoInfo.video && <YoutubeStreams channel="video" setStream={setPickedVideo} streams={videoInfo.video} />}
             {videoInfo.audio && <YoutubeStreams channel="audio" setStream={setPickedAudio} streams={videoInfo.audio} />}
