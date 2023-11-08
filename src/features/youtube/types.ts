@@ -12,3 +12,5 @@ export interface VideoInfo {
   audio: Stream[];
   video: Stream[];
 }
+
+export type ResponseErrorType = "NOT_FOUND" | "INTERNAL";

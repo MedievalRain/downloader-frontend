@@ -6,6 +6,7 @@ import DownloadButton from "../DownloadButton/DownloadButton";
 import FileSize from "../FileSize/FileSize";
 import { getSizeFromStream } from "../utils";
 import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 interface YoutubeLayoutProps {
   url: string;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
@@ -13,15 +14,17 @@ interface YoutubeLayoutProps {
 }
 
 function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
-  const [videoInfo, setVideoInfo] = useState<VideoInfo>();
+  const [videoInfo, setVideoInfo] = useState<VideoInfo | null>(null);
   const [pickedAudio, setPickedAudio] = useState<string | null>(null);
   const [pickedVideo, setPickedVideo] = useState<string | null>(null);
   const audioSize = getSizeFromStream(videoInfo?.audio, pickedAudio);
   const videoSize = getSizeFromStream(videoInfo?.video, pickedVideo);
-  console.log(audioSize, videoSize);
+  const [errorCode, setErrorCode] = useState<number | null>(null);
   useEffect(() => {
     if (isLoading) {
       const fetchVideoInfo = async () => {
+        setVideoInfo(null);
+        setErrorCode(null);
         const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/youtube/info?url=${url}`);
         if (response.ok) {
           const data = (await response.json()) as VideoInfo;
@@ -29,13 +32,17 @@ function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
           setPickedAudio(data.audio[0].id);
           setPickedVideo(data.video[0].id);
         } else {
-          console.error(response.url);
+          setErrorCode(response.status);
         }
         setIsLoading(false);
       };
       fetchVideoInfo();
     }
   }, [url, isLoading]);
+
+  if (errorCode) {
+    return <ErrorMessage errorCode={errorCode} />;
+  }
 
   return (
     <div className={styles.container}>
