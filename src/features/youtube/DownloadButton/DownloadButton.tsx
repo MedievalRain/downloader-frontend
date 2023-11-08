@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import { DownloadRequestParams } from "../types";
 import styles from "./DownloadButton.module.css";
+import Loader from "../../../ui/Loader/Loader";
 interface DownloadButtonProps {
   pickedAudio: string | null;
   pickedVideo: string | null;
@@ -29,7 +30,7 @@ const DownloadButton = memo(function DownloadButton({ pickedAudio, pickedVideo, 
   return (
     <div className={styles["button-container"]}>
       <button onClick={downloadVideo} disabled={isLoading} aria-disabled={isLoading} className={styles.button}>
-        {isLoading ? <div className={styles.loader}></div> : "Download"}
+        {isLoading ? <Loader /> : "Download"}
       </button>
     </div>
   );
