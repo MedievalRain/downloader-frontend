@@ -3,6 +3,8 @@ import { VideoInfo } from "../types";
 import styles from "./YoutubeLayout.module.css";
 import YoutubeStreams from "../YoutubeStreams/YoutubeStreams";
 import DownloadButton from "../DownloadButton/DownloadButton";
+import FileSize from "../FileSize/FileSize";
+import { getSizeFromStream } from "../utils";
 interface YoutubeLayoutProps {
   url: string;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
@@ -13,7 +15,9 @@ function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
   const [videoInfo, setVideoInfo] = useState<VideoInfo>();
   const [pickedAudio, setPickedAudio] = useState<string | null>(null);
   const [pickedVideo, setPickedVideo] = useState<string | null>(null);
-  console.log(videoInfo);
+  const audioSize = getSizeFromStream(videoInfo?.audio, pickedAudio);
+  const videoSize = getSizeFromStream(videoInfo?.video, pickedVideo);
+  console.log(audioSize, videoSize);
   useEffect(() => {
     if (isLoading) {
       const fetchVideoInfo = async () => {
@@ -39,13 +43,13 @@ function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
           <iframe
             className={styles.video}
             src={`https://www.youtube.com/embed/${videoInfo.id}`}
-            allow="autoplay; clipboard-write; encrypted-media; "
-            allowFullScreen
+            allow="clipboard-write; encrypted-media;"
           />
 
           <div className={styles.params}>
             {videoInfo.video && <YoutubeStreams channel="video" setStream={setPickedVideo} streams={videoInfo.video} />}
             {videoInfo.audio && <YoutubeStreams channel="audio" setStream={setPickedAudio} streams={videoInfo.audio} />}
+            <FileSize audiosize={audioSize} videosize={videoSize} />
             <DownloadButton pickedAudio={pickedAudio} pickedVideo={pickedVideo} id={videoInfo.id} />
           </div>
         </>
