@@ -5,9 +5,10 @@ interface DownloadButtonProps {
   pickedAudio: string | null;
   pickedVideo: string | null;
   id: string;
+  title: string;
 }
 
-const DownloadButton = memo(function DownloadButton({ pickedAudio, pickedVideo, id }: DownloadButtonProps) {
+const DownloadButton = memo(function DownloadButton({ pickedAudio, pickedVideo, id, title }: DownloadButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const downloadVideo = async () => {
@@ -17,7 +18,7 @@ const DownloadButton = memo(function DownloadButton({ pickedAudio, pickedVideo, 
     const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/youtube/url?${new URLSearchParams(params)}`);
     if (response.ok) {
       const data = (await response.json()) as { filename: string };
-      window.location.href = `${import.meta.env.VITE_BASE_API_URL}/youtube/download/${data.filename}?videoname=testo`;
+      window.location.href = `${import.meta.env.VITE_BASE_API_URL}/youtube/download/${data.filename}?videoname=${title}`;
     } else {
       console.error(response.url);
     }

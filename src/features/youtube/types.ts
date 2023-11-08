@@ -7,6 +7,7 @@ export interface Stream {
 }
 
 export interface VideoInfo {
+  title: string;
   id: string;
   audio: Stream[];
   video: Stream[];
