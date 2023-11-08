@@ -10,6 +10,7 @@ import SearchControls from "./features/search/SearchControls/SearchControls";
 function App() {
   const [activeSource, setActiveSource] = useState<Source | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+
   const [url, setUrl] = useState("");
   const searchVideo = (source: Source) => {
     setIsLoading(true);

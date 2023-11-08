@@ -1,4 +1,4 @@
-import { memo, useContext } from "react";
+import { memo, useContext, useState } from "react";
 import styles from "./SearchButton.module.css";
 import { Source } from "../../../types";
 import { AppContext } from "../../../AppContext";
@@ -9,15 +9,22 @@ interface SearchButtonProps {
 
 const SearchButton = memo(function SearchButton({ source }: SearchButtonProps) {
   const { searchVideo, isLoading } = useContext(AppContext);
-
+  const [isError, setIsError] = useState(false);
   const handleClick = () => {
     if (source) {
       searchVideo(source);
+    } else {
+      setIsError(true);
     }
   };
-
   return (
-    <button disabled={isLoading} aria-disabled={isLoading} onClick={handleClick} className={styles.button}>
+    <button
+      onAnimationEnd={() => setIsError(false)}
+      disabled={isLoading}
+      aria-disabled={isLoading}
+      onClick={handleClick}
+      className={`${styles.button} ${isError && styles.shake}`}
+    >
       {isLoading ? (
         <Loader />
       ) : (

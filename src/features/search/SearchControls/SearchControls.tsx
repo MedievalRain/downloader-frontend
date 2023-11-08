@@ -18,7 +18,8 @@ const UrlControls = memo(function UrlControls({ url, setUrl }: UrlControlsProps)
     document.documentElement.style.setProperty("--source-color", color);
   }, [inputSource]);
   useEffect(() => {
-    setInputSource(getSourceFromUrl(url));
+    const newSource = getSourceFromUrl(url);
+    setInputSource(newSource);
   }, [url]);
   return (
     <div className={styles.container}>
