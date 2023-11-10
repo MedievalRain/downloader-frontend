@@ -14,10 +14,3 @@ export interface VideoInfo {
 }
 
 export type ResponseErrorType = "NOT_FOUND" | "INTERNAL";
-
-export interface DownloadData {
-  pickedAudio: string | null;
-  pickedVideo: string | null;
-  id: string;
-  title: string;
-}

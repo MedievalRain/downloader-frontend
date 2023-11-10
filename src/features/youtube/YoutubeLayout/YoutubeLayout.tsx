@@ -4,9 +4,9 @@ import styles from "./YoutubeLayout.module.css";
 import YoutubeStreams from "../YoutubeStreams/YoutubeStreams";
 import DownloadButton from "../DownloadButton/DownloadButton";
 import FileSize from "../FileSize/FileSize";
-import { getSizeFromStream } from "../utils";
 import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { useDownload } from "../useDownload";
 interface YoutubeLayoutProps {
   url: string;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
@@ -15,11 +15,9 @@ interface YoutubeLayoutProps {
 
 function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
   const [videoInfo, setVideoInfo] = useState<VideoInfo | null>(null);
-  const [pickedAudio, setPickedAudio] = useState<string | null>(null);
-  const [pickedVideo, setPickedVideo] = useState<string | null>(null);
-  const audioSize = getSizeFromStream(videoInfo?.audio, pickedAudio);
-  const videoSize = getSizeFromStream(videoInfo?.video, pickedVideo);
   const [errorCode, setErrorCode] = useState<number | null>(null);
+  const { isDownloadLoading, downloadVideo, videoSize, setPickedAudio, audioSize, setPickedVideo } = useDownload(videoInfo);
+
   useEffect(() => {
     if (isLoading) {
       const fetchVideoInfo = async () => {
@@ -56,7 +54,7 @@ function YoutubeLayout({ url, isLoading, setIsLoading }: YoutubeLayoutProps) {
             </div>
             <div className={styles.params}>
               <FileSize audiosize={audioSize} videosize={videoSize} />
-              <DownloadButton pickedAudio={pickedAudio} pickedVideo={pickedVideo} id={videoInfo.id} title={videoInfo.title} />
+              <DownloadButton isDownloadLoading={isDownloadLoading} downloadVideo={downloadVideo} />
             </div>
           </div>
         </>
